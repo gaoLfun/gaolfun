@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://39.107.125.219:3306/gaolfun?characterEncoding=UTF-8
+    username: gaolfun
+    password: datBXGrHALhWr3RJ
+    driver-class-name: com.mysql.jdbc.Driver
+  jndi:
+    ignore: true
