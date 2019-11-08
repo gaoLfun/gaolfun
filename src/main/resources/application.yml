@@ -2,10 +2,18 @@ server:
   port: 80
 
 spring:
-  mvc:
-    view:
-      prefix: /
-      suffix: .jsp
+  #热部署--静态资源立即生效
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+  #热部署生效
+  devtools:
+    restart:
+      enabled: true
   datasource:
     url: jdbc:mysql://39.107.125.219:3306/gaolfun?characterEncoding=UTF-8
     username: gaolfun
