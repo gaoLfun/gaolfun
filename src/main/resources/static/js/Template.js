@@ -32,11 +32,11 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
                         anim: 4,                 
                         tab: [{
                             title: '微信',
-                            content: '<img src="../images/zsm.jpg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
+                            content: '<img src="../static/images/wx.png" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
                         },
                         {
                             title: '支付宝',
-                            content: '<img src="../images/zfb.jpg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
+                            content: '<img src="../static/images/zfb.jpg" style="width:255px;" oncontextmenu="return false;" ondragstart="return false;" />',
                         }],
                         success: function (layero, index) {
                             $("#" + layero[0].id + " .layui-layer-content").css("overflow", "hidden");
@@ -97,13 +97,13 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
         //设置样式
         function setStyle(flag) {
             if (!flag) { //未登录
-                $('.girl').attr("src", "images/a.png").css("border-radius", "0px");
+                $('.girl').attr("src", "static/images/a.png").css("border-radius", "0px");
                 $('.livechat-girl').css({ right: "-35px", bottom: "75px" }).removeClass("red-dot");
                 $('.rd-notice-content').text('嘿，来试试登录吧！');
                 return;
             }
             clearInterval(anim);
-			$('.girl').attr("src", "images/nan.png").css("border-radius", "50px");
+			$('.girl').attr("src", "static/images/nan.png").css("border-radius", "50px");
 			$('.rd-notice-content').text('欢迎您，渣渣辉！');
 			$('.livechat-girl').css({ right: "0px", bottom: "80px" });	
         }
