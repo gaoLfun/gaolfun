@@ -1,12 +1,12 @@
-package fun.gaol.gaolfun.controller;
+package fun.gaol.gaolfun.action.moments.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ArchiveController {
-    @RequestMapping("/Archive")
+public class MomentsAction {
+    @RequestMapping("/Moments")
     public String article() {
-        return "Archive";
+        return "Moments";
     }
 }
