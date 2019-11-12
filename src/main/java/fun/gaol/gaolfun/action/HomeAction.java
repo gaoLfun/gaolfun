@@ -1,11 +1,11 @@
-package fun.gaol.gaolfun.controller;
+package fun.gaol.gaolfun.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
-    @RequestMapping("/Index")
+public class HomeAction {
+    @RequestMapping("/")
     public String home() {
         return "Index";
     }
