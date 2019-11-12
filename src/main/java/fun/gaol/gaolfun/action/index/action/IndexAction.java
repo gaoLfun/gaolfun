@@ -2,8 +2,8 @@ package fun.gaol.gaolfun.action.index.action;
 
 import fun.gaol.gaolfun.action.index.bo.IndexManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -14,9 +14,9 @@ public class IndexAction {
     @Autowired
     private IndexManager indexManager;
     @RequestMapping("/Index")
-    public String home(HttpServletRequest request) {
+    public String home(Model model) {
         List<Map<String, Object>> list_article = indexManager.getArticle();
-        request.setAttribute("list_article",list_article);
+        model.addAttribute("list_article",list_article);
         return "Index";
     }
 }

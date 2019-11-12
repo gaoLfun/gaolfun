@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
+<html xmlns:th="http://www.thymeleaf.org"><!-- InstanceBegin template="/Templates/Template.dwt" codeOutsideHTMLIsLocked="false" -->
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <head>
@@ -137,83 +137,13 @@
 					<p class="container-lead text-muted">每个人都有一个习惯，我的习惯是在这里等你来临。</p>
 				</div>
 				<div class="layui-row layui-col-space30 blog-body">
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
+					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12" th:each="list_article:${list_article}">
 						<article class="card">
 							<a href="#">
 								<img class="card-img-top" src="../static/images/img04.jpg" alt=""></a>
 							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
+								<div class="card-subtitle mb-2 text-muted" th:text="${list_article.articleAuthor}  ${list_article.sys_time}"></div>
 								<h4 class="card-title"><a href="#">gaoL v2.0改版啦</a></h4>
-								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
-								<div class="text-right">
-									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-						<article class="card">
-							<a href="#">
-								<img class="card-img-top" src="../static/images/img03.jpg" alt=""></a>
-							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
-								<h4 class="card-title"><a href="#">gaoL v2.0改版啦</a></h4>
-								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
-								<div class="text-right">
-									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-						<article class="card">
-							<a href="#">
-								<img class="card-img-top" src="../static/images/img06.jpg" alt=""></a>
-							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
-								<h4 class="card-title"><a href="#">gaoL v2.0改版啦</a></h4>
-								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
-								<div class="text-right">
-									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-						<article class="card">
-							<a href="#">
-								<img class="card-img-top" src="../static/images/img01.jpg" alt=""></a>
-							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
-								<h4 class="card-title"><a href="#">gaoL v1.0上线啦</a></h4>
-								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
-								<div class="text-right">
-									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-						<article class="card">
-							<a href="#">
-								<img class="card-img-top" src="../static/images/img02.jpg" alt=""></a>
-							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
-								<h4 class="card-title"><a href="#">gaoL v1.0上线啦</a></h4>
-								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
-								<div class="text-right">
-									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="layui-col-md4 layui-col-sm6 layui-col-xs12">
-						<article class="card">
-							<a href="#">
-								<img class="card-img-top" src="../static/images/img05.jpg" alt=""></a>
-							<div class="card-body">
-								<div class="card-subtitle mb-2 text-muted">作者：gaoL &nbsp;&nbsp;2019年11月11日</div>
-								<h4 class="card-title"><a href="#">gaoL v1.0上线啦</a></h4>
 								<p class="card-text">一直以来想自己写代码做博客搭建一个网站出来，但一直迟迟都未动手。其中原因有很多：技术不足、没时间、不想维护、懒，都是我拖延至...</p>
 								<div class="text-right">
 									<a href="#" class="card-more">阅读更多&nbsp;<i class="layui-icon layui-icon-right"></i></a>
