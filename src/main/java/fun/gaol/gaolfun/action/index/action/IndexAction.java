@@ -15,8 +15,8 @@ public class IndexAction {
     private IndexManager indexManager;
     @RequestMapping("/Index")
     public String home(HttpServletRequest request) {
-        List<Map<String, Object>> list = indexManager.getArticle();
-        request.setAttribute("list",list);
+        List<Map<String, Object>> list_article = indexManager.getArticle();
+        request.setAttribute("list_article",list_article);
         return "Index";
     }
 }
