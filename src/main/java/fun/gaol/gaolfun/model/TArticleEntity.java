@@ -2,15 +2,14 @@ package fun.gaol.gaolfun.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "t_article", schema = "gaolfun", catalog = "")
 public class TArticleEntity {
     private String jlid;
-    private String artcleTitle;
-    private String artcleText;
-    private String artcleAuthor;
+    private String articleTitle;
+    private String articleText;
+    private String articleAuthor;
     private Timestamp sysTime;
 
     @Id
@@ -24,33 +23,33 @@ public class TArticleEntity {
     }
 
     @Basic
-    @Column(name = "artcle_title")
-    public String getArtcleTitle() {
-        return artcleTitle;
+    @Column(name = "article_title")
+    public String getArticleTitle() {
+        return articleTitle;
     }
 
-    public void setArtcleTitle(String artcleTitle) {
-        this.artcleTitle = artcleTitle;
-    }
-
-    @Basic
-    @Column(name = "artcle_text")
-    public String getArtcleText() {
-        return artcleText;
-    }
-
-    public void setArtcleText(String artcleText) {
-        this.artcleText = artcleText;
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
     }
 
     @Basic
-    @Column(name = "artcle_author")
-    public String getArtcleAuthor() {
-        return artcleAuthor;
+    @Column(name = "article_text")
+    public String getArticleText() {
+        return articleText;
     }
 
-    public void setArtcleAuthor(String artcleAuthor) {
-        this.artcleAuthor = artcleAuthor;
+    public void setArticleText(String articleText) {
+        this.articleText = articleText;
+    }
+
+    @Basic
+    @Column(name = "article_author")
+    public String getArticleAuthor() {
+        return articleAuthor;
+    }
+
+    public void setArticleAuthor(String articleAuthor) {
+        this.articleAuthor = articleAuthor;
     }
 
     @Basic
@@ -67,16 +66,26 @@ public class TArticleEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         TArticleEntity that = (TArticleEntity) o;
-        return Objects.equals(jlid, that.jlid) &&
-                Objects.equals(artcleTitle, that.artcleTitle) &&
-                Objects.equals(artcleText, that.artcleText) &&
-                Objects.equals(artcleAuthor, that.artcleAuthor) &&
-                Objects.equals(sysTime, that.sysTime);
+
+        if (jlid != null ? !jlid.equals(that.jlid) : that.jlid != null) return false;
+        if (articleTitle != null ? !articleTitle.equals(that.articleTitle) : that.articleTitle != null) return false;
+        if (articleText != null ? !articleText.equals(that.articleText) : that.articleText != null) return false;
+        if (articleAuthor != null ? !articleAuthor.equals(that.articleAuthor) : that.articleAuthor != null)
+            return false;
+        if (sysTime != null ? !sysTime.equals(that.sysTime) : that.sysTime != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jlid, artcleTitle, artcleText, artcleAuthor, sysTime);
+        int result = jlid != null ? jlid.hashCode() : 0;
+        result = 31 * result + (articleTitle != null ? articleTitle.hashCode() : 0);
+        result = 31 * result + (articleText != null ? articleText.hashCode() : 0);
+        result = 31 * result + (articleAuthor != null ? articleAuthor.hashCode() : 0);
+        result = 31 * result + (sysTime != null ? sysTime.hashCode() : 0);
+        return result;
     }
 }
