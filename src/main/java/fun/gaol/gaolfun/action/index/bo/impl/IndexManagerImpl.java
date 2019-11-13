@@ -16,9 +16,8 @@ public class IndexManagerImpl implements IndexManager {
 
 	public List<Map<String, Object>> getArticle () {
 		List<Map<String, Object>> list = new ArrayList<>();
-		String sql ="select * from t_article";
+		String sql ="select * from t_article li";
 		list = jdbcTemplate.queryForList(sql);
-		System.out.println(list.get(0).get("artcle_title"));
 		return list;
 	}
 }
