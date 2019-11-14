@@ -6,7 +6,6 @@ import com.qq.connect.api.qzone.UserInfo;
 import com.qq.connect.javabeans.AccessToken;
 import com.qq.connect.javabeans.qzone.UserInfoBean;
 import com.qq.connect.oauth.Oauth;
-import com.qq.connect.utils.json.JSONObject;
 import fun.gaol.gaolfun.action.index.bo.IndexManager;
 import fun.gaol.gaolfun.model.UOpenUserEntity;
 import fun.gaol.gaolfun.utils.JdbcTool;
@@ -15,15 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class IndexAction {
@@ -47,8 +43,9 @@ public class IndexAction {
 
     //获取登录者的基础信息
     @RequestMapping(value = "/QQCallback")
-    public JSONObject QQAfterlogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        JSONObject jsonObject = new JSONObject();
+    @ResponseBody
+    public Map<String, Object> QQAfterlogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Map<String, Object> map = new HashMap<>();
         System.out.println("AfterLogin=======================================================");
         response.setContentType("text/html; charset=utf-8");  // 响应编码
         Enumeration<String> parameterNames = request.getParameterNames();
@@ -84,7 +81,8 @@ public class IndexAction {
                 UserInfo qzoneUserInfo = new UserInfo(accessToken, openID);
                 // 存储登陆人信息
                 UOpenUserEntity user = new UOpenUserEntity();
-                UuidUtil uuidUtil = null;
+                UuidUtil uuidUtil = new UuidUtil();
+                System.out.println("+++++++++++++++++++"+uuidUtil.getUuid());
                 user.setJlid(uuidUtil.getUuid());
                 user.setOpenId(openID);
                 user.setSysTime(new Timestamp(new Date().getTime()));
@@ -100,13 +98,13 @@ public class IndexAction {
                 JdbcTool jdbcTool = null;
 
                 //返回登录数据
-                jsonObject.put("nickname",userInfoBean.getNickname());
-                jsonObject.put("gender",userInfoBean.getGender());
-                jsonObject.put("success","true");
+                map.put("nickname",userInfoBean.getNickname());
+                map.put("gender",userInfoBean.getGender());
+                map.put("success","true");
             }
         } catch (QQConnectException e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return map;
     }
 }
