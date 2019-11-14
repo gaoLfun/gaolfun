@@ -95,7 +95,7 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
         });
 
         //设置样式
-        function setStyle(flag) {
+        function setStyle(flag,nickname,gender) {
             if (!flag) { //未登录
                 $('.girl').attr("src", "static/images/a.png").css("border-radius", "0px");
                 $('.livechat-girl').css({ right: "-35px", bottom: "75px" }).removeClass("red-dot");
@@ -104,14 +104,27 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
             }
             clearInterval(anim);
 			$('.girl').attr("src", "static/images/nan.png").css("border-radius", "50px");
-			$('.rd-notice-content').text('欢迎您，渣渣辉！');
+			$('.rd-notice-content').text('欢迎您，'+nickname+'！');
 			$('.livechat-girl').css({ right: "0px", bottom: "80px" });	
         }
         //登录事件
         function login() {
-            https://blog.csdn.net/qq_37618797/article/details/90344835
-			layer.msg("登录成功！");
-			setStyle(true);
+            $.ajax({
+                type : "POST", //提交方式
+                async:false,
+                url : "${pageContext.request.contextPath}/qqLogin",//路径
+                data : {
+                    //数据，这里使用的是Json格式进行传输
+                },
+                success : function(result) {//返回数据根据结果进行相应的处理
+                    if ( result.success ) {
+                        layer.msg("登录成功！");
+                        setStyle(true,result.nickname,result.gender);
+                    } else {
+                        layer.msg("登陆出错啦！");
+                    }
+                }
+            });
         }
 
     }
