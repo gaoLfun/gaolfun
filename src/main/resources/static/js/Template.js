@@ -109,6 +109,7 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
         }
         //登录事件
         function login() {
+            https://blog.csdn.net/qq_37618797/article/details/90344835
 			layer.msg("登录成功！");
 			setStyle(true);
         }
