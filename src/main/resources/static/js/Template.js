@@ -111,11 +111,8 @@ layui.use(['element', 'laypage', 'form', 'util', 'layer', 'flow','table','layedi
         function login() {
             $.ajax({
                 type : "GET", //提交方式
-                async:false,
                 url : "qqLogin",//路径
-                dataType: 'jsonp',
-                jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数
-                crossDomain: true,
+                dataType: 'json',
                 data : {
                     //数据，这里使用的是Json格式进行传输
                 },
