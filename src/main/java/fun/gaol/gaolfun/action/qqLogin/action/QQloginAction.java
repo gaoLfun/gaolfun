@@ -6,6 +6,8 @@ import com.qq.connect.api.qzone.UserInfo;
 import com.qq.connect.javabeans.AccessToken;
 import com.qq.connect.javabeans.qzone.UserInfoBean;
 import com.qq.connect.oauth.Oauth;
+import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +24,7 @@ public class QQloginAction {
     @RequestMapping(value = "/qqLogin")
     public void qqLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=utf-8");
+        ServletActionContext.getResponse().setHeader("Access-Control-Allow-Origin", "*");
         try {
             response.sendRedirect(new Oauth().getAuthorizeURL(request));
         } catch (QQConnectException e) {
@@ -35,9 +38,8 @@ public class QQloginAction {
      * @return
      */
     @RequestMapping(value = "/QQCallback")
-    @ResponseBody
     public void QQCallback(HttpServletRequest request, HttpSession session) throws Exception {
-
+        ServletActionContext.getResponse().setHeader("Access-Control-Allow-Origin", "*");
         AccessToken accessTokenObj = (new Oauth()).getAccessTokenByRequest(request);
         String accessToken = null, openID = null;
 
@@ -53,6 +55,20 @@ public class QQloginAction {
         UserInfo qzoneUserInfo = new UserInfo(accessToken, openID);
         UserInfoBean userInfoBean = qzoneUserInfo.getUserInfo();
         System.out.println(userInfoBean);
-
+        JSONObject jobj = JSONObject.fromObject(userInfoBean);
+        String result = jobj.toString();
+        System.out.println(result);
+        responseText(result);
     }
+    public static void responseText(String repText) throws Exception {
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.setContentType("html/txt");
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("Cache-Control", "no-cache, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.getWriter().write(repText.toString());
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
+
 }
